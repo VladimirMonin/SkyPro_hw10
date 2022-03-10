@@ -55,13 +55,17 @@ app = Flask(__name__)
 
 @app.route("/")
 def page_index():
-
     return f"<pre>{candidates_string}<pre>"
 
 @app.route("/candidate/<id>")
 def uder_id(id):
     user_info_by_id = find_user_by_id(id)
     return user_info_by_id
+
+@app.route("/skill/<x>")
+def user_skill(skill):
+    return skill
+
 
 app.run()
 
