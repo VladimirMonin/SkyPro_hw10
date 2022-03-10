@@ -52,9 +52,11 @@ def find_user_by_skill(skill):
     candidate_string = ''
     for candidate in candidates_list:
         skills_list = candidate["skills"].split(',')
-        print(skills_list)
+        if skill in skills_list:
+            candidate_string +=
 
 
+find_user_by_skill('s')
 # ЗАПУСК ПРИЛОЖЕНИЯ ФЛАСК
 # app = Flask(__name__)
 #
