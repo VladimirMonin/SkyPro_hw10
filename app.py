@@ -15,3 +15,13 @@ def load_candidates(filename='candidates.json'):
 
 # ЗАГРУЗКА ВОПРОСОВ
 candidates_list = load_candidates()
+
+
+# ЗАПУСК ПРИЛОЖЕНИЯ ФЛАСК
+app = Flask(__name__)
+
+@app.route("/")
+def page_index():
+    return "<pre>Oh\nmay!<pre>"
+
+app.run()
