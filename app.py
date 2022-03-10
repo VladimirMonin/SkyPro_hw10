@@ -39,11 +39,12 @@ def find_user_by_id(user_id):
     for candidate in candidates_list:
         if candidate["id"] == int(user_id):
             candidate_string += f'<img src = "{candidate["picture"]}">\n\n'
-            candidates_string += f'<pre>\nИмя кандидата - {candidate["name"]}\n' \
+            candidate_string += f'<pre>\nИмя кандидата - {candidate["name"]}\n' \
                                  f'Позиция кандидата - candidate["position"]\n' \
                                  f'Навыки: candidate["skills"]'
-    return candidates_string
+    return candidate_string
 
+# print(find_user_by_id(1))
 # ЗАПУСК ПРИЛОЖЕНИЯ ФЛАСК
 # app = Flask(__name__)
 #
