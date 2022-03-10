@@ -22,6 +22,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def page_index():
-    return "<pre>Oh\nmay!<pre>"
+
+    return str(candidates_list[0]['name'])
 
 app.run()
