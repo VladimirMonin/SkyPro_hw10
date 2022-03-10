@@ -15,17 +15,22 @@ def load_candidates(filename='candidates.json'):
 
 # ЗАГРУЗКА ВОПРОСОВ
 candidates_list = load_candidates()
+candidates_string = ''
 
-candidate_0 = f'id: {candidates_list[0]["id"]}\n' \
-              f'name: {candidates_list[0]["name"]}\n' \
-              f'picture: {candidates_list[0]["picture"]}\n' \
-              f'position: {candidates_list[0]["position"]}\n' \
-              f'gender: {candidates_list[0]["gender"]}\n' \
-              f'age: {candidates_list[0]["age"]}\n' \
-              f'skills: {candidates_list[0]["skills"]}'
+for candidate in candidates_list:
 
-str_candidate_list = [candidate_0]
-print(str_candidate_list[0])
+    candidate_str = f'id: {candidate["id"]}\n' \
+                  f'name: {candidate["name"]}\n' \
+                  f'picture: {candidate["picture"]}\n' \
+                  f'position: {candidate["position"]}\n' \
+                  f'gender: {candidate["gender"]}\n' \
+                  f'age: {candidate["age"]}\n' \
+                  f'skills: {candidate["skills"]}\n\n'
+
+    candidates_string +=candidate_str
+
+# str_candidate_list = [candidate_0]
+# print(str_candidate_list[0])
 
 # ЗАПУСК ПРИЛОЖЕНИЯ ФЛАСК
 app = Flask(__name__)
@@ -33,6 +38,6 @@ app = Flask(__name__)
 @app.route("/")
 def page_index():
 
-    return f"<pre>{str_candidate_list[0]}<pre>"
+    return f"<pre>{candidates_string}<pre>"
 
 app.run()
