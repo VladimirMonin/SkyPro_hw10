@@ -16,6 +16,16 @@ def load_candidates(filename='candidates.json'):
 # ЗАГРУЗКА ВОПРОСОВ
 candidates_list = load_candidates()
 
+candidate_0 = f'id: {candidates_list[0]["id"]}\n' \
+              f'name: {candidates_list[0]["name"]}\n' \
+              f'picture: {candidates_list[0]["picture"]}\n' \
+              f'position: {candidates_list[0]["position"]}\n' \
+              f'gender: {candidates_list[0]["gender"]}\n' \
+              f'age: {candidates_list[0]["age"]}\n' \
+              f'skills: {candidates_list[0]["skills"]}'
+
+str_candidate_list = [candidate_0]
+print(str_candidate_list[0])
 
 # ЗАПУСК ПРИЛОЖЕНИЯ ФЛАСК
 app = Flask(__name__)
@@ -23,6 +33,6 @@ app = Flask(__name__)
 @app.route("/")
 def page_index():
 
-    return str(candidates_list[0]['name'])
+    return f"<pre>{str_candidate_list[0]}<pre>"
 
 app.run()
