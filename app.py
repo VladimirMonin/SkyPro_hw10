@@ -48,24 +48,29 @@ def find_user_by_id(user_id):
         candidate_string += f'<h1>Кандидат не найден</h1>'
     return candidate_string
 
-# print(find_user_by_id(1))
+def find_user_by_skill(skill):
+    candidate_string = ''
+    for candidate in candidates_list:
+        skills_list = candidate["skills"].split(',')
+        print(skills_list)
+
 
 # ЗАПУСК ПРИЛОЖЕНИЯ ФЛАСК
-app = Flask(__name__)
-
-@app.route("/")
-def page_index():
-    return f"<pre>{candidates_string}<pre>"
-
-@app.route("/candidate/<id>")
-def uder_id(id):
-    user_info_by_id = find_user_by_id(id)
-    return user_info_by_id
-
-@app.route("/skill/<x>")
-def user_skill(skill):
-    return skill
-
-
-app.run()
+# app = Flask(__name__)
+#
+# @app.route("/")
+# def page_index():
+#     return f"<pre>{candidates_string}<pre>"
+#
+# @app.route("/candidate/<id>")
+# def uder_id(id):
+#     user_info_by_id = find_user_by_id(id)
+#     return user_info_by_id
+#
+# @app.route("/skill/<x>")
+# def user_skill(x):
+#     return x
+#
+#
+# app.run()
 
