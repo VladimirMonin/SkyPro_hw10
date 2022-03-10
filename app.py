@@ -15,6 +15,8 @@ def load_candidates(filename='candidates.json'):
 
 # ЗАГРУЗКА ВОПРОСОВ
 candidates_list = load_candidates()
+
+# ПЕРВЫЙ ШАГ ДЗ - выводим ВСЁ
 candidates_string = ''
 
 for candidate in candidates_list:
@@ -29,15 +31,31 @@ for candidate in candidates_list:
 
     candidates_string +=candidate_str
 
-# str_candidate_list = [candidate_0]
-# print(str_candidate_list[0])
+
+# ВТОРОЙ ШАГ ДЗ - выводим кандидата по ID
+
+def find_user_by_id(user_id):
+    candidate_string = ''
+    for candidate in candidates_list:
+        if candidate["id"] == int(user_id):
+            candidate_string += f'<img src = "{candidate["picture"]}">\n\n'
+            candidates_string += f'<pre>\nИмя кандидата - {candidate["name"]}\n' \
+                                 f'Позиция кандидата - candidate["position"]\n' \
+                                 f'Навыки: candidate["skills"]'
+    return candidates_string
 
 # ЗАПУСК ПРИЛОЖЕНИЯ ФЛАСК
-app = Flask(__name__)
+# app = Flask(__name__)
+#
+# @app.route("/")
+# def page_index():
+#
+#     return f"<pre>{candidates_string}<pre>"
+#
+# @app.route("/candidate/<id>")
+# def uder_id(id):
+#     user_info_by_id = find_user_by_id(id)
+#     return user_info_by_id
+#
+# app.run()
 
-@app.route("/")
-def page_index():
-
-    return f"<pre>{candidates_string}<pre>"
-
-app.run()
