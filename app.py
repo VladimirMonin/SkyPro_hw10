@@ -40,23 +40,28 @@ def find_user_by_id(user_id):
         if candidate["id"] == int(user_id):
             candidate_string += f'<img src = "{candidate["picture"]}">\n\n'
             candidate_string += f'<pre>\nИмя кандидата - {candidate["name"]}\n' \
-                                 f'Позиция кандидата - candidate["position"]\n' \
-                                 f'Навыки: candidate["skills"]'
+                                 f'Позиция кандидата - {candidate["position"]}\n' \
+                                 f'Навыки: {candidate["skills"]}'
+
+            break
+    else:
+        candidate_string += f'<h1>Кандидат не найден</h1>'
     return candidate_string
 
 # print(find_user_by_id(1))
+
 # ЗАПУСК ПРИЛОЖЕНИЯ ФЛАСК
-# app = Flask(__name__)
-#
-# @app.route("/")
-# def page_index():
-#
-#     return f"<pre>{candidates_string}<pre>"
-#
-# @app.route("/candidate/<id>")
-# def uder_id(id):
-#     user_info_by_id = find_user_by_id(id)
-#     return user_info_by_id
-#
-# app.run()
+app = Flask(__name__)
+
+@app.route("/")
+def page_index():
+
+    return f"<pre>{candidates_string}<pre>"
+
+@app.route("/candidate/<id>")
+def uder_id(id):
+    user_info_by_id = find_user_by_id(id)
+    return user_info_by_id
+
+app.run()
 
