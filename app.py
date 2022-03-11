@@ -51,12 +51,19 @@ def find_user_by_id(user_id):
 def find_user_by_skill(skill):
     candidate_string = ''
     for candidate in candidates_list:
-        skills_list = candidate["skills"].split(',')
-        if skill in skills_list:
-            candidate_string +=
+        skills_list = candidate["skills"].lower().split(',')
+        if skill.lower() in skills_list:
+            candidate_string += f'<pre>\nИмя кандидата - {candidate["name"]}\n' \
+                                f'Позиция кандидата - {candidate["position"]}\n' \
+                                f'Навыки: {candidate["skills"]}\n\n'
+
+    if len(candidate_string) < 1:
+        return '<h1>Кандидат такими навыками не найден!</h1>'
+    else:
+        return candidate_string
 
 
-find_user_by_skill('s')
+print(find_user_by_skill('Python'))
 # ЗАПУСК ПРИЛОЖЕНИЯ ФЛАСК
 # app = Flask(__name__)
 #
