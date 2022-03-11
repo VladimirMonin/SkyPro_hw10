@@ -17,24 +17,32 @@ def load_candidates(filename='candidates.json'):
 candidates_list = load_candidates()
 
 # ПЕРВЫЙ ШАГ ДЗ - выводим ВСЁ
-candidates_string = ''
 
-for candidate in candidates_list:
 
-    candidate_str = f'id: {candidate["id"]}\n' \
-                  f'name: {candidate["name"]}\n' \
-                  f'picture: {candidate["picture"]}\n' \
-                  f'position: {candidate["position"]}\n' \
-                  f'gender: {candidate["gender"]}\n' \
-                  f'age: {candidate["age"]}\n' \
-                  f'skills: {candidate["skills"]}\n\n'
+def show_all_users():
+    candidates_string = ''
+    for candidate in candidates_list:
 
-    candidates_string +=candidate_str
+        candidate_str = f'id: {candidate["id"]}\n' \
+                      f'name: {candidate["name"]}\n' \
+                      f'picture: {candidate["picture"]}\n' \
+                      f'position: {candidate["position"]}\n' \
+                      f'gender: {candidate["gender"]}\n' \
+                      f'age: {candidate["age"]}\n' \
+                      f'skills: {candidate["skills"]}\n\n'
 
+        candidates_string +=candidate_str
+    return candidates_string
 
 # ВТОРОЙ ШАГ ДЗ - выводим кандидата по ID
 
 def find_user_by_id(user_id):
+    """
+    Функция принемает ID пользователя и формирует строку с данным пользователем. Возвращает инфу
+    о пользователе или сообщение что кандидат не найден
+    :param user_id:
+    :return:
+    """
     candidate_string = ''
     for candidate in candidates_list:
         if candidate["id"] == int(user_id):
@@ -58,7 +66,7 @@ def find_user_by_skill(skill):
                                 f'Навыки: {candidate["skills"]}\n\n'
 
     if len(candidate_string) < 1:
-        return '<h1>Кандидат такими навыками не найден!</h1>'
+        return '<h1>Кандидат с такими навыками не найден!</h1>'
     else:
         return candidate_string
 
@@ -69,7 +77,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def page_index():
-    return f"<pre>{candidates_string}<pre>"
+    all_candidates = show_all_users()
+    return f"<pre>{all_candidates}<pre>"
 
 @app.route("/candidate/<id>")
 def uder_id(id):
