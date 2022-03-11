@@ -41,7 +41,7 @@ def find_user_by_id(user_id):
             candidate_string += f'<img src = "{candidate["picture"]}">\n\n'
             candidate_string += f'<pre>\nИмя кандидата - {candidate["name"]}\n' \
                                  f'Позиция кандидата - {candidate["position"]}\n' \
-                                 f'Навыки: {candidate["skills"]}'
+                                 f'Навыки: {candidate["skills"]}<pre>'
 
             break
     else:
@@ -63,23 +63,24 @@ def find_user_by_skill(skill):
         return candidate_string
 
 
-print(find_user_by_skill('Python'))
+
 # ЗАПУСК ПРИЛОЖЕНИЯ ФЛАСК
-# app = Flask(__name__)
-#
-# @app.route("/")
-# def page_index():
-#     return f"<pre>{candidates_string}<pre>"
-#
-# @app.route("/candidate/<id>")
-# def uder_id(id):
-#     user_info_by_id = find_user_by_id(id)
-#     return user_info_by_id
-#
-# @app.route("/skill/<x>")
-# def user_skill(x):
-#     return x
-#
-#
-# app.run()
+app = Flask(__name__)
+
+@app.route("/")
+def page_index():
+    return f"<pre>{candidates_string}<pre>"
+
+@app.route("/candidate/<id>")
+def uder_id(id):
+    user_info_by_id = find_user_by_id(id)
+    return user_info_by_id
+
+@app.route("/skill/<x>")
+def user_skill(x):
+    user_info_by_skill = find_user_by_skill(x)
+    return user_info_by_skill
+
+
+app.run()
 
